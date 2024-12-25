@@ -33,7 +33,7 @@ public class BookmarkedFragment extends Fragment {
     private BookmarkAdapter bookmarkAdapter;
     private List<BookmarkedArticle> bookmarkedArticles = new ArrayList<>();
     private List<BookmarkedArticle> filteredList = new ArrayList<>();
-    private TextView tvEmptyMessage;
+    private TextView tvEmptyMessage, tvNotFoundMessage;
     private String loggedInUsername;
 
 
@@ -46,6 +46,7 @@ public class BookmarkedFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerViewBookmark);
         tvEmptyMessage = view.findViewById(R.id.tvEmptyMessage);
+        tvNotFoundMessage = view.findViewById(R.id.tvNotFoundMessage);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         bookmarkAdapter = new BookmarkAdapter(getContext(), filteredList, this::handleBookmarkAllDeleted);
@@ -85,12 +86,18 @@ public class BookmarkedFragment extends Fragment {
     }
 
     private void updateEmptyState() {
-        if (filteredList.isEmpty()) {
+        if(bookmarkedArticles.isEmpty()){
             recyclerView.setVisibility(View.GONE);
             tvEmptyMessage.setVisibility(View.VISIBLE);
+            tvNotFoundMessage.setVisibility(View.GONE);
+        } else if(filteredList.isEmpty()){
+            recyclerView.setVisibility(View.GONE);
+            tvEmptyMessage.setVisibility(View.GONE);
+            tvNotFoundMessage.setVisibility(View.VISIBLE);
         } else {
             recyclerView.setVisibility(View.VISIBLE);
             tvEmptyMessage.setVisibility(View.GONE);
+            tvNotFoundMessage.setVisibility(View.GONE);
         }
     }
 
