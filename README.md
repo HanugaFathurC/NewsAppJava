@@ -44,5 +44,5 @@ This is a News Application built using Java and Android. The application allows 
 
 
 ## Snapshoot Application
-![Snapshoot Application](./resource_repository/snapshoot.png)
-![Snapshoot Application2](./resource_repository/snapshoot2.png)
+![Snapshoot Application](./resource_repository/snapshoot_app1.png)
+![Snapshoot Application2](./resource_repository/snapshoot_app2.png)

@@ -165,6 +165,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_BOOKMARK_USERNAME, username);
 
         long result = db.insert(TABLE_BOOKMARKS, null, values);
+        this.close();
+
         return result != -1;
     }
 
