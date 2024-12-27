@@ -21,7 +21,7 @@ import java.util.Calendar;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText etFullName, etNewUsername, etNewPassword, etConfirmPassword;
-    private Button etBirthDate;
+    private Button btnBirthDate;
     private RadioGroup rgGender;
     private TextView tvAlreadyHaveAccount;
     private Button btnRegister;
@@ -37,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
         etNewUsername = findViewById(R.id.etNewUsername);
         etNewPassword = findViewById(R.id.etNewPassword);
         etConfirmPassword = findViewById(R.id.etConfirmPassword);
-        etBirthDate = findViewById(R.id.btnBirthDate);
+        btnBirthDate = findViewById(R.id.btnBirthDate);
         etFullName = findViewById(R.id.etFullName);
         rgGender = findViewById(R.id.rgGender);
         btnRegister = findViewById(R.id.btnRegister);
@@ -47,14 +47,14 @@ public class RegisterActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
 
         // Set up birth date picker dialog
-        etBirthDate.setOnClickListener(v -> showDatePickerDialog());
+        btnBirthDate.setOnClickListener(v -> showDatePickerDialog());
 
         // Handle register button click
         btnRegister.setOnClickListener(v -> {
             String username = etNewUsername.getText().toString().trim();
             String fullName = etFullName.getText().toString().trim();
             String password = etNewPassword.getText().toString().trim();
-            String birthDate = etBirthDate.getText().toString().trim();
+            String birthDate = btnBirthDate.getText().toString().trim();
 
             // Check if a gender is selected
             int selectedId = rgGender.getCheckedRadioButtonId();
@@ -135,7 +135,7 @@ public class RegisterActivity extends AppCompatActivity {
                 (view, selectedYear, selectedMonth, selectedDay) -> {
                     // Format the date and set it in the EditText
                     String birthDate = selectedYear + "-" + (selectedMonth + 1) + "-" + selectedDay;
-                    etBirthDate.setText(birthDate);
+                    btnBirthDate.setText(birthDate);
                 },
                 year, month, day);
         datePickerDialog.show();
